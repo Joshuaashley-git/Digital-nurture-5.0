@@ -51,9 +51,3 @@ public class Product {
         //  return "id = "+ productId + "| name = " + productName + "| quantity = " + quantity + "| price = " + price;
     }
 }
-
-   /* public static void main() {
-
-    Product p = new Product("101","senty",20,20000);
-    System.out.println(p);
-    }}*/
