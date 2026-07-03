@@ -1,0 +1,3 @@
+com/cognizant/orm_learn/entity/Employee.class
+com/cognizant/orm_learn/service/EmployeeService.class
+com/cognizant/orm_learn/repository/EmployeeRepository.class
