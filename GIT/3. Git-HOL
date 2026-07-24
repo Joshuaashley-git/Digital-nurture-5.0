@@ -1,0 +1,70 @@
+ashley@Ashleys-MacBook-Pro GitDemo % git branch GitNewBranch
+ashley@Ashleys-MacBook-Pro GitDemo % git branch -a
+  GitNewBranch
+* main
+  remotes/origin/main
+ashley@Ashleys-MacBook-Pro GitDemo % git checkout GitNewBranch
+Switched to branch 'GitNewBranch'
+ashley@Ashleys-MacBook-Pro GitDemo % git branch
+* GitNewBranch
+  main
+ashley@Ashleys-MacBook-Pro GitDemo % echo Exercise-3 > newfile.txt
+ashley@Ashleys-MacBook-Pro GitDemo % git add newfile.txt
+ashley@Ashleys-MacBook-Pro GitDemo % git commit -m "Added newfile.txt in GitNewBranch"
+[GitNewBranch 54393fb] Added newfile.txt in GitNewBranch
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newfile.txt
+ashley@Ashleys-MacBook-Pro GitDemo % git status
+On branch GitNewBranch
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+ashley@Ashleys-MacBook-Pro GitDemo % git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+ashley@Ashleys-MacBook-Pro GitDemo % git diff main GitNewBranch
+diff --git a/newfile.txt b/newfile.txt
+new file mode 100644
+index 0000000..efb8205
+--- /dev/null
++++ b/newfile.txt
+@@ -0,0 +1 @@
++Exercise-3
+ashley@Ashleys-MacBook-Pro GitDemo % git difftool main GitNewBranch
+
+This message is displayed because 'diff.tool' is not configured.
+See 'git difftool --tool-help' or 'git help config' for more details.
+'git difftool' will now attempt to use one of the following tools:
+opendiff kdiff3 tkdiff xxdiff meld kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge emerge vimdiff nvimdiff
+
+Viewing (1/1): 'newfile.txt'
+Launch 'opendiff' [Y/n]? y
+^C
+ashley@Ashleys-MacBook-Pro GitDemo % git merge GitNewBranch
+Updating a33f41a..54393fb
+Fast-forward
+ newfile.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 newfile.txt
+ashley@Ashleys-MacBook-Pro GitDemo % git log --oneline --graph --decorate
+* 54393fb (HEAD -> main, GitNewBranch) Added newfile.txt in GitNewBranch
+*   a33f41a (origin/main) Merge branch 'main' of https://gitlab.com/Joshuaashley-git/gitdemo
+|\  
+| * 03152c5 Initial commit
+* f624869 Exercise:1 - Git commit message
+ashley@Ashleys-MacBook-Pro GitDemo % git branch -d GitNewBranch
+Deleted branch GitNewBranch (was 54393fb).
+ashley@Ashleys-MacBook-Pro GitDemo % git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+ashley@Ashleys-MacBook-Pro GitDemo % 
+
