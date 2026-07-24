@@ -1,0 +1,120 @@
+ashley@Ashleys-MacBook-Pro GitDemo % git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+
+nothing added to commit but untracked files present (use "git add" to track)
+ashley@Ashleys-MacBook-Pro GitDemo % git branch GitWork
+ashley@Ashleys-MacBook-Pro GitDemo % git checkout GitWork
+Switched to branch 'GitWork'
+ashley@Ashleys-MacBook-Pro GitDemo % echo "<message>Hello from branch</message>" > hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % echo "<message>Updated content in branch</message>" > hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git status
+On branch GitWork
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+	hello.xml
+
+nothing added to commit but untracked files present (use "git add" to track)
+ashley@Ashleys-MacBook-Pro GitDemo % git add hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git commit -m "Added and updated hello.xml in GitWork"
+[GitWork 9a4f04d] Added and updated hello.xml in GitWork
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+ashley@Ashleys-MacBook-Pro GitDemo % echo "<message>Hello from master</message>" > hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git add hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git commit -m "Added hello.xml in master"
+[main 2833629] Added hello.xml in master
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git log --oneline --graph --decorate --all
+* 2833629 (HEAD -> main) Added hello.xml in master
+| * 9a4f04d (GitWork) Added and updated hello.xml in GitWork
+|/  
+* 54393fb (origin/main) Added newfile.txt in GitNewBranch
+*   a33f41a Merge branch 'main' of https://gitlab.com/Joshuaashley-git/gitdemo
+|\  
+| * 03152c5 Initial commit
+* f624869 Exercise:1 - Git commit message
+ashley@Ashleys-MacBook-Pro GitDemo % git diff main GitWork
+diff --git a/hello.xml b/hello.xml
+index b9ba826..88cddc4 100644
+--- a/hello.xml
++++ b/hello.xml
+@@ -1 +1 @@
+-<message>Hello from master</message>
++<message>Updated content in branch</message>
+ashley@Ashleys-MacBook-Pro GitDemo % git difftool main GitWork
+
+This message is displayed because 'diff.tool' is not configured.
+See 'git difftool --tool-help' or 'git help config' for more details.
+'git difftool' will now attempt to use one of the following tools:
+opendiff kdiff3 tkdiff xxdiff meld kompare gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge emerge vimdiff nvimdiff
+
+Viewing (1/1): 'hello.xml'
+Launch 'opendiff' [Y/n]? y
+ashley@Ashleys-MacBook-Pro GitDemo % git merge GitWork
+Auto-merging hello.xml
+CONFLICT (add/add): Merge conflict in hello.xml
+Automatic merge failed; fix conflicts and then commit the result.
+ashley@Ashleys-MacBook-Pro GitDemo % code hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git mergetool
+
+This message is displayed because 'merge.tool' is not configured.
+See 'git mergetool --tool-help' or 'git help config' for more details.
+'git mergetool' will now attempt to use one of the following tools:
+opendiff kdiff3 tkdiff xxdiff meld tortoisemerge gvimdiff diffuse diffmerge ecmerge p4merge araxis bc codecompare smerge emerge vimdiff nvimdiff
+Merging:
+hello.xml
+
+Normal merge conflict for 'hello.xml':
+  {local}: created file
+  {remote}: created file
+Hit return to start merge resolution tool (opendiff): 
+hello.xml seems unchanged.
+Was the merge successful [y/n]? y
+ashley@Ashleys-MacBook-Pro GitDemo % git add hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git commit -m "Resolved merge conflict in hello.xml"
+[main 04434ac] Resolved merge conflict in hello.xml
+ashley@Ashleys-MacBook-Pro GitDemo % git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	.gitignore
+	hello.xml.orig
+
+nothing added to commit but untracked files present (use "git add" to track)
+ashley@Ashleys-MacBook-Pro GitDemo % echo *.orig >> .gitignore
+ashley@Ashleys-MacBook-Pro GitDemo % git add .gitignore
+ashley@Ashleys-MacBook-Pro GitDemo % git commit -m "Added backup file pattern to .gitignore"
+[main 48aa365] Added backup file pattern to .gitignore
+ 1 file changed, 3 insertions(+)
+ create mode 100644 .gitignore
+ashley@Ashleys-MacBook-Pro GitDemo % git branch
+  GitWork
+* main
+ashley@Ashleys-MacBook-Pro GitDemo % git branch -d GitWork
+Deleted branch GitWork (was 9a4f04d).
+ashley@Ashleys-MacBook-Pro GitDemo % git log --oneline --graph --decorate
+* 48aa365 (HEAD -> main) Added backup file pattern to .gitignore
+*   04434ac Resolved merge conflict in hello.xml
+|\  
+| * 9a4f04d Added and updated hello.xml in GitWork
+* | 2833629 Added hello.xml in master
+|/  
+* 54393fb (origin/main, origin/HEAD) Added newfile.txt in GitNewBranch
+*   a33f41a Merge branch 'main' of https://gitlab.com/Joshuaashley-git/gitdemo
+|\  
+| * 03152c5 Initial commit
+* f624869 Exercise:1 - Git commit message
+ashley@Ashleys-MacBook-Pro GitDemo % 
