@@ -1,0 +1,22 @@
+ashley@Ashleys-MacBook-Pro GitDemo % git status
+On branch main
+Your branch is ahead of 'origin/main' by 4 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+ashley@Ashleys-MacBook-Pro GitDemo % git branch
+* main
+ashley@Ashleys-MacBook-Pro GitDemo % git pull origin main
+From https://gitlab.com/Joshuaashley-git/gitdemo
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+ashley@Ashleys-MacBook-Pro GitDemo % git push origin main
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (12/12), 1.19 KiB | 1.19 MiB/s, done.
+Total 12 (delta 4), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/Joshuaashley-git/gitdemo.git
+   54393fb..48aa365  main -> main
+ashley@Ashleys-MacBook-Pro GitDemo % 
