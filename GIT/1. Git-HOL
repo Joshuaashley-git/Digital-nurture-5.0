@@ -1,0 +1,92 @@
+ashley@Ashleys-MacBook-Pro ~ % git --version
+git version 2.50.1 (Apple Git-155)
+ashley@Ashleys-MacBook-Pro ~ % git config --global user.name "Joshua Ashley"
+ashley@Ashleys-MacBook-Pro ~ % git config --global user.email "ashjoshuaashley@gmail.com"
+ashley@Ashleys-MacBook-Pro ~ % git config --list
+credential.helper=osxkeychain
+init.defaultbranch=main
+filter.lfs.clean=git-lfs clean -- %f
+filter.lfs.smudge=git-lfs smudge -- %f
+filter.lfs.process=git-lfs filter-process
+filter.lfs.required=true
+url.https://github.com/.insteadof=git@github.com:
+user.name=Joshua Ashley
+user.email=ashjoshuaashley@gmail.com
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+core.ignorecase=true
+core.precomposeunicode=true
+ashley@Ashleys-MacBook-Pro ~ % code --version
+1.129.1
+8a7abeba6e03ea3af87bfbce9a1b7e48fed567b8
+arm64
+ashley@Ashleys-MacBook-Pro ~ % git config --global core.editor "code --wait"
+ashley@Ashleys-MacBook-Pro ~ % git config --global -e
+ashley@Ashleys-MacBook-Pro ~ % mkdir GitDemo
+ashley@Ashleys-MacBook-Pro ~ % cd GitDemo
+ashley@Ashleys-MacBook-Pro GitDemo % git init
+Initialized empty Git repository in /Users/ashley/GitDemo/.git/
+ashley@Ashleys-MacBook-Pro GitDemo % ls -la
+total 0
+drwxr-xr-x   3 ashley  staff    96 24 Jul 09:39 .
+drwxr-x---+ 82 ashley  staff  2624 24 Jul 09:39 ..
+drwxr-xr-x   9 ashley  staff   288 24 Jul 09:39 .git
+ashley@Ashleys-MacBook-Pro GitDemo % echo Welcome to Git! > welcome.txt
+ashley@Ashleys-MacBook-Pro GitDemo % ls -la
+total 8
+drwxr-xr-x   4 ashley  staff   128 24 Jul 09:39 .
+drwxr-x---+ 82 ashley  staff  2624 24 Jul 09:39 ..
+drwxr-xr-x   9 ashley  staff   288 24 Jul 09:39 .git
+-rw-r--r--   1 ashley  staff    16 24 Jul 09:39 welcome.txt
+ashley@Ashleys-MacBook-Pro GitDemo % cat welcome.txt
+Welcome to Git!
+ashley@Ashleys-MacBook-Pro GitDemo % git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	welcome.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+ashley@Ashleys-MacBook-Pro GitDemo % git add welcome.txt
+ashley@Ashleys-MacBook-Pro GitDemo % git commit
+[main (root-commit) f624869] Exercise:1 - Git commit message
+ 1 file changed, 1 insertion(+)
+ create mode 100644 welcome.txt
+ashley@Ashleys-MacBook-Pro GitDemo % git status
+On branch main
+nothing to commit, working tree clean
+ashley@Ashleys-MacBook-Pro GitDemo % git remote add origin https://gitlab.com/Joshuaashley-git/gitdemo.git
+ashley@Ashleys-MacBook-Pro GitDemo % git remote -v
+origin	https://gitlab.com/Joshuaashley-git/gitdemo.git (fetch)
+origin	https://gitlab.com/Joshuaashley-git/gitdemo.git (push)
+ashley@Ashleys-MacBook-Pro GitDemo % git branch
+* main
+ashley@Ashleys-MacBook-Pro GitDemo % git push -u origin main
+remote: HTTP Basic: Access denied. If a password was provided for Git authentication, the password was incorrect or you're required to use a token instead of a password. If a token was provided, it was either incorrect, expired, or improperly scoped. See https://gitlab.com/help/topics/git/troubleshooting_git.md#error-on-git-fetch-http-basic-access-denied
+fatal: Authentication failed for 'https://gitlab.com/Joshuaashley-git/gitdemo.git/'
+ashley@Ashleys-MacBook-Pro GitDemo % git push -u origin main
+Username for 'https://gitlab.com': Joshuaashley-git
+Password for 'https://Joshuaashley-git@gitlab.com':
+ashley@Ashleys-MacBook-Pro GitDemo % git pull origin main --allow-unrelated-histories --no-rebase
+From https://gitlab.com/Joshuaashley-git/gitdemo
+ * branch            main       -> FETCH_HEAD
+Merge made by the 'ort' strategy.
+ README.md | 93 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 93 insertions(+)
+ create mode 100644 README.md
+ashley@Ashleys-MacBook-Pro GitDemo % git push -u origin main                                     
+Enumerating objects: 6, done.
+Counting objects: 100% (6/6), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (5/5), 555 bytes | 555.00 KiB/s, done.
+Total 5 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://gitlab.com/Joshuaashley-git/gitdemo.git
+   03152c5..a33f41a  main -> main
+branch 'main' set up to track 'origin/main'.
+ashley@Ashleys-MacBook-Pro GitDemo % 
